@@ -45,4 +45,15 @@ contract CrowdFund {
         request.approved = false;
         request.approvalCount = 0;
     }
+
+    function requestApproval(uint256 requestId) public restricted {
+        Request storage request = requests[requestId];
+        require(!request.approved);
+        require(!request.approvals[msg.sender]);
+        request.approvals[msg.sender] = true;
+        request.approvalCount++;
+        if (request.approvalCount >= 2) {
+            request.approved = true;
+        }
+    }
 }
