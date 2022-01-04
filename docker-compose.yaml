@@ -8,15 +8,23 @@ version: "3.7"
 #   remixide:
 
 services:
-  remixide:
-    # <<: *project-base
-    image: remixproject/remix-ide
-    container_name: remixide
-    working_dir: /usr/src/app
+  # remixide:
+  #   # <<: *project-base
+  #   image: remixproject/remix-ide
+  #   container_name: remixide
+  #   working_dir: /usr/src/app
+  #   volumes:
+  #     - "/smartcontracts:/usr/src/app"
+  #   ports:
+  #     - 8080:80
+  #     - 65520:65520
+  #   restart: always
+  #   tty: true
+  contract:
+    build:
+      context: ./smart-contract
+    command: "npm run start"
     volumes:
-      - "/smartcontracts:/usr/src/app"
+      - ./smart-contract:/usr/src/app
     ports:
-      - 8080:80
-      - 65520:65520
-    restart: always
-    tty: true
+      - 8545:8545

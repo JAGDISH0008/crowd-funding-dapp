@@ -28,6 +28,7 @@
     "ethers": "^5.5.2",
     "hardhat": "^2.8.0",
     "hardhat-gas-reporter": "^1.0.6",
+    "hardhat-watcher": "^2.1.1",
     "prettier": "^2.5.1",
     "prettier-plugin-solidity": "^1.0.0-beta.19",
     "solhint": "^3.3.6",
