@@ -12,11 +12,12 @@ contract CrowdFund {
         uint256 approvalCount;
         mapping(address => bool) approvals;
     }
-    uint256 numRequests;
+    uint256 public numRequests = 0;
     address public owner;
     uint256 public minContibution;
     mapping(address => bool) public approvers;
-    mapping(uint256 => Request) requests;
+    uint256 public approversCount = 0;
+    Request[] public requests;
 
     constructor(uint256 minimumContribution) {
         owner = msg.sender;
@@ -26,6 +27,7 @@ contract CrowdFund {
     function contribute() public payable {
         require(msg.value >= minContibution);
         approvers[msg.sender] = true;
+        approversCount++;
     }
 
     modifier restricted() {
@@ -38,22 +40,24 @@ contract CrowdFund {
         uint256 amount,
         address beneficiary
     ) public restricted {
-        Request storage request = requests[numRequests++];
+        Request storage request = requests.push();
         request.description = description;
         request.amount = amount;
         request.beneficiary = beneficiary;
         request.approved = false;
         request.approvalCount = 0;
+        numRequests++;
     }
 
-    function requestApproval(uint256 requestId) public restricted {
+    function approveRequest(uint256 requestId) public restricted {
         Request storage request = requests[requestId];
         require(!request.approved);
         require(!request.approvals[msg.sender]);
         request.approvals[msg.sender] = true;
         request.approvalCount++;
-        if (request.approvalCount >= 2) {
+        if (request.approvalCount >= approversCount / 2) {
             request.approved = true;
+            payable(request.beneficiary).transfer(request.amount);
         }
     }
 }

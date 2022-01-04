@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "node":"npx hardhat node",
-    "compile":"npx hardhat compile"
+    "start": "npx hardhat watch compilation",
+    "node": "npx hardhat node",
+    "compile": "npx hardhat compile",
+    "remix-ide": "remixd -s ./ -u https://remix.ethereum.org"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-etherscan": "^2.1.8",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@remix-project/remixd": "^0.5.5",
     "@typechain/ethers-v5": "^7.2.0",
     "@typechain/hardhat": "^2.3.1",
     "@types/chai": "^4.3.0",
