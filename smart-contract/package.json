@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx hardhat watch compilation",
     "node": "npx hardhat node",
-    "compile": "npx hardhat compile",
-    "remix-ide": "remixd -s ./ -u https://remix.ethereum.org"
+    "compile": "npx hardhat compile"
   },
   "author": "",
   "license": "ISC",
