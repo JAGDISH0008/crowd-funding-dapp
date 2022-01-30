@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "create-project-form",
@@ -9,12 +9,12 @@ export class CreateProjectComponent {
   @Output() onCancel = new EventEmitter<any>()
   @Output() onSubmit = new EventEmitter<any>();
   public createProjectForm = new FormGroup({
-    name: new FormControl(""),
-    description: new FormControl(""),
-    deadline: new FormControl(""),
-    budget: new FormControl(""),
-    category: new FormControl(""),
-    reward: new FormControl("")
+    name: new FormControl("", [Validators.required]),
+    description: new FormControl("", [Validators.required]),
+    deadline: new FormControl("", [Validators.required]),
+    budget: new FormControl("", [Validators.required]),
+    category: new FormControl("", [Validators.required]),
+    reward: new FormControl("", [Validators.required])
   })
 
   constructor() { }
