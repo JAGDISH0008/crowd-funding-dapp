@@ -6,5 +6,11 @@ import { Component } from "@angular/core";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent {
+  public displayStyle = "none";
   constructor() { }
+  openPopup() { this.displayStyle = "block"; }
+  closePopup() { this.displayStyle = "none"; }
+  OnSubmit($event: any) {
+    console.log($event);
+  }
 }

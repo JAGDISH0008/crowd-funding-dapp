@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateProjectComponent } from '../../components/create-project/create-project.component';
 import { HeaderComponent } from './header.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    CreateProjectComponent
   ],
-  imports: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [],
   exports: [
